@@ -40,6 +40,8 @@ services:
     image: postgres:11.5
     hostname: db
     restart: always
+    ports:
+      - 5432:5432
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
@@ -47,4 +49,4 @@ services:
 
 
 volumes:
-  static: {} 
+  static: {}

@@ -1,12 +1,13 @@
 ---
-title: Label and annotate data in Label Studio
+title: Label and annotate data 
 type: guide
 order: 402
-meta_title: Labeling Interface
-meta_description: Label Studio Documentation for labeling and annotating various types of data and labeling tasks for machine learning and data science projects.
+meta_title: Label and annotate data
+meta_description: Label and annotate data using the Label Studio UI to create bounding boxes, label text spans, set up relations, and filter and sort project data for your machine learning dataset creation.
 ---
 
 Label and annotate your data with the open source data labeling tool, Label Studio. After you [set up your project](setup_project.html) and [labeling interface](setup.html) and [import your data](tasks.html), you can start labeling and annotating your data.  
+
 
 1. Open a project in Label Studio and optionally [filter or sort the data](#Filter-or-sort-project-data).    
 2. Click **Label** to [start labeling](#Start-labeling).
@@ -146,4 +147,70 @@ For example, keep a label selected after creating a region, display labels on bo
 
 You can also modify the layout of the screen, hide or show predictions, annotations, or the results panel, and hide or show various controls and buttons.
 
+## Advanced image labeling
 
+If you want to perform advanced image labeling, follow these examples and guidance for assistance. 
+
+### Add multiple types of regions to image annotations
+
+You can add multiple types of regions to image annotations. You can add any of the following:
+- Rectangles
+- Ellipses
+- Keypoints
+- Polygons
+- Brush masks
+
+To add different types of regions to your image annotations, follow this example.
+
+Create a custom template for your labeling interface using the following example:
+```xml
+<View>
+  <Image name="image" value="$image" />
+  <Rectangle name="rect" toName="image" />
+  <Ellipse name="ellipse" toName="image" />
+  <KeyPoint name="kp" toName="image" />
+  <Polygon name="polygon" toName="image" />
+  <Brush name="brush" toName="image" />
+  <Choices name="choices" toName="image">
+    <Choice value="yes"></Choice>
+    <Choice value="no"></Choice>
+  </Choices>
+<Labels name="labels" toName="image" fillOpacity="0.5" strokeWidth="5">
+  <Label value="building" background="green"></Label>
+  <Label value="vehicle" background="blue"></Label>
+  </Labels>
+</View>
+```
+
+This example makes rectangles, ellipses, polygons, keypoints, and brush masks available to the annotator, along with image classification choices of yes and no, and region labels of building and vehicle. 
+
+### Faster image labeling
+
+You can add a rectangle or an ellipse to your image with just two clicks, or double click to create a polygon, rectangle, or ellipse. 
+
+If you accidentally select a point on an image while creating a polygon, just double click to remove the erroneous point and continue creating the region. There must be at least three points on the polygon to be able to remove a point.
+
+### Create regions without labels
+
+When you're annotating images, you can create regions without applying labels. 
+
+1. Create a region by double-clicking or clicking and dragging to create a bounding box, or click the points necessary to construct a polygon.
+2. Select the created region in the sidebar or on the image.
+3. Select the label that you want to apply to the region.
+4. Repeat these steps for any regions that you want to create.
+
+This can be helpful for two-step labeling, where you want one annotator to create regions and another annotator to label the regions. 
+
+By default, regions without labels appear gray. 
+
+### Erase brush mask labels
+
+If you make a mistake when labeling with the brush mask, you can erase it. You must select a brush region in the sidebar before you can erase any part of it. 
+
+If you want to completely remove a region and start over, delete the region instead of erasing it. Erasing a region does not delete it. 
+
+
+
+
+
+<!-- md annotation_ids.md -->

@@ -1,9 +1,10 @@
 ---
-title: Set up machine learning with Label Studio
+title: Set up machine learning
+short: Machine learning setup
 type: guide
 order: 606
-meta_title: Machine Learning Integration
-meta_description: Label Studio Documentation for connecting Label Studio to machine learning frameworks using the Label Studio machine learning SDK for machine learning and data science projects.
+meta_title: Set up machine learning with Label Studio
+meta_description: Connect Label Studio to machine learning frameworks using the Label Studio ML backend SDK to integrate your model development pipeline seamlessly with your data labeling workflow. 
 ---
 
 Set up machine learning with your labeling process by setting up a machine learning backend for Label Studio. 
@@ -75,10 +76,7 @@ Follow these steps to set up an example text classifier ML backend with Label St
 ```bash
 label-studio start 
 ```
-You can also use the [`--ml-backends` parameter](start.html) to specify the ML backend when you start Label Studio. For example: 
-```bash
-label-studio start my-text-project --ml-backends http://localhost:9090
-```
+
 5. Create a project and import text data. Set up the labeling interface to use the **Text Classification** template. 
 
 6. In the **Machine Learning** section of the project settings page, add the link `http://localhost:9090` to your machine learning model backend. 
@@ -114,7 +112,7 @@ If the model has not been trained yet, do the following to get predictions to ap
 
 You can also retrieve predictions automatically by loading tasks. To do this, enable `Retrieve predictions when loading a task automatically` on the **Machine Learning** settings for your project. When you scroll through tasks in the data manager for a project, the predictions for those tasks are automatically retrieved from the ML backend. Predictions also appear when labeling tasks in the Label stream workflow.  
 
-> Note: For a large dataset, the HTTP request to retrieve predictions might be interrupted by a timeout. If you want to **get all predictions** for all tasks in a dataset, the recommended way is to make a [PATCH call to the tasks endpoint of the Label Studio API](https://api.labelstud.io/#operation/tasks_partial_update) with `"predictions": [...]` field on the ML backend side for each generated prediction.
+> Note: For a large dataset, the HTTP request to retrieve predictions might be interrupted by a timeout. If you want to **get all predictions** for all tasks in a dataset, the recommended way is to make a [POST call to the predictions endpoint of the Label Studio API](https://api.labelstud.io/#operation/api_predictions_create) on the ML backend side for each generated prediction.
 
 If you want to retrieve predictions manually for a list of tasks **using only an ML backend**, make a GET request to the `/predict` URL of your ML backend with a payload of the tasks that you want to see predictions for, formatted like the following example: 
 
@@ -164,10 +162,7 @@ Perform these prerequisites to make sure your server starts successfully.
     ```
     The machine learning backend server starts listening on port 9090.
 
-3. Connect the machine learning backend to Label Studio on the **Machine Learning** settings for your project in Label Studio UI, or use the following command on the command line:
-    ```bash
-    label-studio start --ml-backends http://localhost:9090
-    ```
+3. Connect the machine learning backend to Label Studio on the **Machine Learning** settings for your project in Label Studio UI.
 
 If you run into any issues, see [Troubleshoot machine learning](ml_troubleshooting.html)
 

@@ -1,9 +1,10 @@
 ---
-title: <img src="/images/LSE/en.svg" width=67 height=18 alt="Enterprise" style="vertical-align:middle"/> Install Label Studio Enterprise on-premises using Docker 
+title: Install Label Studio Enterprise on-premises using Docker
+badge: <i class='ent'/></i>
 type: guide
 order: 201
-meta_title: Install and Upgrade Enterprise
-meta_description: Label Studio Documentation for installing and upgrading Label Studio Enterprise with Docker or on AWS to use for your machine learning and data science projects. 
+meta_title: Install Label Studio Enterprise on-premises using Docker
+meta_description: Install, back up, and upgrade Label Studio Enterprise with Docker to create machine learning and data science projects on-premises.
 ---
 
 > Beta documentation: Label Studio Enterprise v2.0.0 is currently in Beta. As a result, this documentation might not reflect the current functionality of the product.
@@ -35,13 +36,15 @@ You must be authorized to use Label Studio Enterprise images.
 ```bash
 docker login --username heartexlabs
 ```
-When prompted to enter the password, enter the token here. If Login Succeeded, a `~/.docker/config.json` file is created with the authorization settings.   
+When prompted to enter the password, enter the token. If login succeeds, a `~/.docker/config.json` file is created with the authorization settings.  
+
+> If you have default registries specified when logging into Docker, you might need to explicitly specify the registry: `docker  login --username heartexlabs docker.io`.
+
 2. Pull the latest Label Studio Enterprise image:
 ```bash
 docker pull heartexlabs/heartex:latest
 ```
-
-> Note: In some cases, you might need to use `sudo` to log in or pull images.
+> Note: You might need to use `sudo` to log in or pull images.
 
 ### Add the license file 
 After you retrieve the latest Label Studio Enterprise image, add the license file. You can't start the Docker image without a license file. 

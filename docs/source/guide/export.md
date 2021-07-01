@@ -1,9 +1,10 @@
 ---
-title: Export annotations from Label Studio
+title: Export annotations and data from Label Studio
+short: Export annotations
 type: guide
 order: 415
 meta_title: Export Annotations
-meta_description: Label Studio Documentation for exporting data labeling annotations for machine learning and data science projects.
+meta_description: Label Studio documentation for exporting data labeling annotations in multiple formats that you can use in machine learning models and data science projects.
 ---
 
 ## Export data from Label Studio
@@ -79,6 +80,10 @@ Export audio transcription labels for automatic speech recognition as the JSON m
 ```json
 {“audio_filepath”: “/path/to/audio.wav”, “text”: “the transcription”, “offset”: 301.75, “duration”: 0.82, “utt”: “utterance_id”, “ctm_utt”: “en_4156”, “side”: “A”}
 ```
+
+### YOLO
+
+Export object detection annotations in the YOLOv3 format. You must have at least one `RectangleLabels` or similar object detection annotations present in your labeling configuration to use the YOLO export format.
 
 
 ## Label Studio JSON format of annotated tasks 
@@ -202,3 +207,6 @@ Review the full list of JSON properties in the [API documentation](api.html).
 
 
 <!-- md image_units.md -->
+
+
+<!-- md annotation_ids.md -->

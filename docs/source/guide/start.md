@@ -2,8 +2,8 @@
 title: Start Label Studio
 type: guide
 order: 206
-meta_title: Start Commands
-meta_description: Label Studio Documentation for starting Label Studio and configuring the environment to use Label Studio with your machine learning or data science project. 
+meta_title: Start Commands for Label Studio
+meta_description: Documentation for starting Label Studio and configuring the environment to use Label Studio with your machine learning or data science project. 
 ---
 
 After you install Label Studio, start the server to start using it. 
@@ -28,6 +28,7 @@ Some available commands for Label Studio provide information or start the Label 
 | `label-studio reset_password` | Reset the password for a specific Label Studio username. See [Create user accounts for Label Studio](signup.html). |
 | `label-studio shell` | Get access to a shell for Label Studio to manipulate data directly. See documentation for the Django [shell-plus command](https://django-extensions.readthedocs.io/en/latest/shell_plus.html). |
 | `label-studio version` | Show the version of Label Studio and then terminates.
+| `label-studio user --username <email>` | Show the user info with token.
 
 The following command line arguments are optional and must be specified with `label-studio start <argument> <value>` or as an environment variable when you set up the environment to host Label Studio:
 
@@ -39,7 +40,7 @@ The following command line arguments are optional and must be specified with `la
 | `-d` `--debug` | N/A | `False` | Enable debug mode for troubleshooting Label Studio. |
 | `-c` `--config` | `CONFIG_PATH` | `default_config.json` | Deprecated, do not use. Specify the path to the server configuration for Label Studio. |
 | `-l` `--label-config` | `LABEL_STUDIO_LABEL_CONFIG` | `None` | Path to the label configuration file for a specific Label Studio project. See [Set up your labeling project](setup.html). |
-| `--ml-backends` | `LABEL_STUDIO_ML_BACKENDS` | `None` | Specify the URLs for one or more machine learning backends. See [Set up machine learning with your labeling process](ml.html). |
+| `--ml-backends` | `LABEL_STUDIO_ML_BACKENDS` | `None` | Command line argument is deprecated. Specify the URLs for one or more machine learning backends. See [Set up machine learning with your labeling process](ml.html). |
 | `--sampling` | N/A | `sequential` | Specify one of sequential or uniform to define the order for labeling tasks. See [Set up task sampling for your project](start.html#Set_up_task_sampling_for_your_project) on this page. |
 | `--log-level` | N/A | `ERROR` | One of DEBUG, INFO, WARNING, or ERROR. Use to specify the logging level for the Label Studio server. |
 | `-p` `--port` | `LABEL_STUDIO_PORT` | `8080` | Specify the web server port for Label Studio. Defaults to 8080. See [Run Label Studio on localhost with a different port](start.html#Run-Label-Studio-on-localhost-with-a-different-port) on this page. |
@@ -47,8 +48,9 @@ The following command line arguments are optional and must be specified with `la
 | `--cert` | `LABEL_STUDIO_CERT_FILE` | `None` | Deprecated, do not use. Certificate file to use to access Label Studio over HTTPS. Must be in PEM format. See [Run Label Studio with HTTPS](start.html#Run-Label-Studio-with-HTTPS) on this page. | 
 | `--key` | `LABEL_STUDIO_KEY_FILE` | `None` | Deprecated, do not use. Private key file for HTTPS connection. Must be in PEM format. See [Run Label Studio with HTTPS](start.html#Run-Label-Studio-with-HTTPS) on this page. |
 | `--initial-project-description` | `LABEL_STUDIO_PROJECT_DESC` | `''` | Specify a project description for a Label Studio project. See [Set up your labeling project](setup.html). |
-| `--password` | `LABEL_STUDIO_PASSWORD` | `None` | Password to use for the default user. See [Create user accounts for Label Studio](signup.html). |
-| `--username` | `LABEL_STUDIO_USERNAME` | `default_user@localhost` | Username to use for the default user. See [Create user accounts for Label Studio](signup.html). |
+| `--password` | `LABEL_STUDIO_PASSWORD` | `None` | Password to use for the default user. See [Set up user accounts](signup.html). |
+| `--username` | `LABEL_STUDIO_USERNAME` | `default_user@localhost` | Username to use for the default user. See [Set up user accounts](signup.html). |
+| `--user-token` |  LABEL_STUDIO_USER_TOKEN | Automatically generated. | Authentication token for a user to use for the API. Must be set with a username, otherwise automatically generated. See [Set up user accounts](signup.html).
 | `--agree-fix-sqlite` | N/A | `False` | Automatically agree to let Label Studio fix SQLite issues when using Python 3.6–3.8 on Windows operating systems. | 
 | N/A | `LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED` | `False` | Allow Label Studio to access local file directories to import storage. See [Run Label Studio on Docker and use local storage](start.html#Run_Label_Studio_on_Docker_and_use_local_storage). |
 | N/A | `LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT` | `/` | Specify the root directory for Label Studio to use when accessing local file directories. See [Run Label Studio on Docker and use local storage](start.html#Run_Label_Studio_on_Docker_and_use_local_storage). |
